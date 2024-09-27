@@ -4,6 +4,7 @@ from circleshape import *
 from player import *
 from asteroids import *
 from asteroidfield import AsteroidField 
+from shot import Shot
 import sys
 
 
@@ -44,6 +45,12 @@ def main():
             if player.is_colliding(item):
                 print("Game Over!")
                 sys.exit()
+
+        for shot in shots:
+            for asteroid in asteroids:
+                if asteroid.is_colliding(shot):
+                    shot.kill()
+                    asteroid.split()
 
 
         # Fill the screen with black
